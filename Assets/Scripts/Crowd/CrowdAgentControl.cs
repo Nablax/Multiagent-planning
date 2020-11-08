@@ -13,6 +13,8 @@ public class CrowdAgentControl : MonoBehaviour
 	const float kMaxCohesionForce = 1, kMaxSeparationForce = 100, kMaxAlignmentForce = 1, kMaxToCenterForce = 1;
     const float kMinParticleToParticleDistance = 0.05f;
 	const float kCohesionFactor = 0.5f, kAlignmentFactor = 0.5f, kSeperationFactor = 2.5f, kToCenterFactor = 0.001f;
+    Animator animator;
+    
     public void setAgentID(int inID){
         agentID = inID;
     }
@@ -23,6 +25,9 @@ public class CrowdAgentControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
+        animator.Play("HumanoidWalk");
+
         if(crowds[agentID].velocity.magnitude != 0){
             this.transform.rotation = Quaternion.LookRotation(crowds[agentID].velocity.normalized, Vector3.up);
         }

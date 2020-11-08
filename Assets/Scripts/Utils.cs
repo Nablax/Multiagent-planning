@@ -54,7 +54,7 @@ namespace Utils{
             GL.End();
         }
 
-        public static Color IdxMapColor(int idx, int totalIdx){
+        public static Color IdxMapColor(float idx, float totalIdx){
             Color retColor = new Color();
             float prop = 3.0f * idx / totalIdx;
             retColor.r = Mathf.Min(prop, 1);
