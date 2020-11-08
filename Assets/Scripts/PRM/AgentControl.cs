@@ -15,6 +15,7 @@ public class AgentControl : MonoBehaviour
     private Vector3 curDirection;
     public float agentVelocity = 0.1f;
     private GameObject agentParent;
+    Animator animator;
     
     public static void setStaticParams(PRMNodes[] inNodes, int inNumMapNode, int inNumAgentNode){
         myNodes = inNodes;
@@ -91,11 +92,13 @@ public class AgentControl : MonoBehaviour
     }
     private void agentMove(){
         if(nextNodeIdx == routePath.Count){
+            animator.Play("HumanoidIdle");
             curDirection = new Vector3(0, 0, 0);
             return;
         }
         var nextNode = routePath[nextNodeIdx];
         if(nextNode == -1){
+            animator.Play("HumanoidIdle");
             return;
         }
         var distToNextNode = Vector3.Distance(this.transform.position, myNodes[nextNode].position);
@@ -117,6 +120,7 @@ public class AgentControl : MonoBehaviour
             }
         }
         transform.rotation = Quaternion.LookRotation(curDirection, Vector3.up);
+        animator.Play("HumanoidWalk");
     }
     //back track the path
     private void backTrack(){
@@ -136,6 +140,8 @@ public class AgentControl : MonoBehaviour
     }
     void Start()
     {
+        animator = GetComponentInChildren<Animator>();
+        animator.Play("HumanoidIdle");
         float colliderHalfX = this.GetComponent<BoxCollider>().size.x / 2;
         float colliderHalfZ = this.GetComponent<BoxCollider>().size.z / 2;
         agentRadius = Mathf.Sqrt(colliderHalfX * colliderHalfX + colliderHalfZ * colliderHalfZ);

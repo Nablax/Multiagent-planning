@@ -59,7 +59,8 @@ public class NodesControl : MonoBehaviour
         float colliderHalfX = templateAgent.GetComponent<BoxCollider>().size.x / 2;
         float colliderHalfZ = templateAgent.GetComponent<BoxCollider>().size.z / 2;
         float agentRadius = Mathf.Sqrt(colliderHalfX * colliderHalfX + colliderHalfZ * colliderHalfZ);
-        for(int i = 0; i < totalNode; i++){
+        //connect map nodes to agent
+        for(int i = 0; i < numMapNode; i++){
             for(int j = i + 1; j < totalNode; j++){
                 ray.updateRay(myNodes[i].position, myNodes[j].position);
                 for(int k = 0; k < obstacles.transform.childCount; k++){
@@ -73,6 +74,23 @@ public class NodesControl : MonoBehaviour
                         myNodes[i].neighbors.Add(j);
                         myNodes[j].neighbors.Add(i);
                     }
+                }
+            }
+        }
+        //connect agent to its goal if possible
+        for(int i = startIdxOfAgent; i < startIdxOfAgent + numAgentNode; i++){
+            int j = i + numAgentNode;
+            ray.updateRay(myNodes[i].position, myNodes[j].position);
+            for(int k = 0; k < obstacles.transform.childCount; k++){
+                var curObstacle = obstacles.transform.GetChild(k);
+                tmpRec.origin = curObstacle.position;
+                tmpRec.sideLength = new Vector2(curObstacle.localScale.x, curObstacle.localScale.z);
+                if(Utils.CollisionCheck.rayAABB2D(tmpRec, ray, agentRadius)){
+                    break;
+                }
+                else if(k == obstacles.transform.childCount - 1){
+                    myNodes[i].neighbors.Add(j);
+                    myNodes[j].neighbors.Add(i);
                 }
             }
         }
@@ -129,6 +147,11 @@ public class NodesControl : MonoBehaviour
         updateNodes(totalNode);
         generateAgents();
     }
+
+    public Material selectedMaterial;
+    public Material unselectedMaterial;
+    GameObject previous = null;
+
     private void Update() {
         if (Input.GetMouseButtonDown(0))
         {
@@ -137,6 +160,15 @@ public class NodesControl : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 selectedObject = hit.collider.gameObject;
+
+                if (previous != null)
+                {
+                    previous.GetComponent<Renderer>().material = unselectedMaterial;
+                }
+
+                previous = selectedObject;
+
+                selectedObject.GetComponent<Renderer>().material = selectedMaterial;
                 Debug.Log(selectedObject.name);
             }
         }

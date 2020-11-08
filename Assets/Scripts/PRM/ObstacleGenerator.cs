@@ -7,10 +7,14 @@ public class ObstacleGenerator : MonoBehaviour
     private Mesh[] cylinderObjects;
     public int obstacleNum = 100;
     private GameObject obstacleCube = null;
+    public Material unselectedMaterial;
     // Start is called before the first frame update
-    void generateObstacles(){
+    void generateObstacles()
+    {
         obstacleCube = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        for(int i = 0; i < obstacleNum; i++){
+        obstacleCube.GetComponent<Renderer>().material = unselectedMaterial;
+        for(int i = 0; i < obstacleNum; i++)
+        {
             float obstacleScalingXZ = Random.Range(10, 20);
             Vector3 obstacleScaling = new Vector3(obstacleScalingXZ, Random.Range(20, 50), obstacleScalingXZ);
             Vector3 obstaclePosition = new Vector3(Random.Range(-ConstValues.kPRMSize * 5, ConstValues.kPRMSize * 5), obstacleScaling.y / 2, Random.Range(-ConstValues.kPRMSize * 5, ConstValues.kPRMSize * 5));

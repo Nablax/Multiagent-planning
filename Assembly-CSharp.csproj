@@ -52,9 +52,9 @@
      <Compile Include="Assets\FlatKit\Scripts\UvScroller.cs" />
      <Compile Include="Assets\Scripts\Crowd\CrowdGenerator.cs" />
      <Compile Include="Assets\DynamicBone\Demo\DynamicBoneDemo1.cs" />
+     <Compile Include="Assets\Scripts\Crowd\CrowdTerrainControl.cs" />
      <Compile Include="Assets\Scripts\PRM\NodesControl.cs" />
      <Compile Include="Assets\DynamicBone\Scripts\DynamicBonePlaneCollider.cs" />
-     <Compile Include="Assets\Scripts\Crowd\CrowdTerrainControl.cs" />
      <None Include="Assets\FlatKit\Shaders\ImageEffects\Resources\OutlinePlus.shader" />
      <None Include="Assets\FlatKit\Shaders\StylizedSurface\DustyroomTerrainSplatmapCommon.cginc" />
      <None Include="Assets\Cubeds-Unity-Shaders-0.26\Cubed&apos;s Unity Shaders\Shaders\Misc Shaders\Simple Gradient Sky.shader" />
