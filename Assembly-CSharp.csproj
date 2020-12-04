@@ -76,7 +76,7 @@
      <None Include="Assets\Third Party Assets\Cubeds-Unity-Shaders-0.26\Cubed&apos;s Unity Shaders\Shaders\Flat Lit Toon Lite\Flat Lit Toon Lite Fade.shader" />
      <None Include="Assets\Third Party Assets\Cubeds-Unity-Shaders-0.26\Cubed&apos;s Unity Shaders\Shaders\Misc Shaders\Flat Lit Toon Distance Fade.shader" />
      <None Include="Assets\Third Party Assets\Cubeds-Unity-Shaders-0.26\Cubed&apos;s Unity Shaders\Shaders\Flat Lit Toon Lite\Flat Lit Toon Lite Transparent.shader" />
-     <None Include="Assets\SkySerie Freebie\Hdri setup.txt" />
+     <None Include="Assets\Third Party Assets\SkySerie Freebie\Hdri setup.txt" />
      <None Include="Assets\Third Party Assets\DynamicBone\ReadMe.txt" />
      <None Include="Assets\Third Party Assets\Cubeds-Unity-Shaders-0.26\Cubed&apos;s Unity Shaders\Shaders\CGIncludes\FlatLitToonCore.cginc" />
      <None Include="Assets\Third Party Assets\Characters\ThirdPersonCharacter\ThirdPersonCharacterGuidelines.txt" />
@@ -268,9 +268,6 @@
     </Reference>
     <Reference Include="UnityEditor">
         <HintPath>D:/Program Files/Unity/Hub/Editor/2020.1.16f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
-    </Reference>
-    <Reference Include="Assembly-CSharp-firstpass">
-        <HintPath>D:/MyProgramming/Unity Projects/5611-proj3/Library/ScriptAssemblies/Assembly-CSharp-firstpass.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
         <HintPath>D:/MyProgramming/Unity Projects/5611-proj3/Library/PackageCache/com.unity.ext.nunit@1.0.5/net35/unity-custom/nunit.framework.dll</HintPath>
